@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  
+<html xmlns:th="https://www.thymeleaf.org">
+<body>
+<div class="container">
+Successful Login
+ <form action="#"  th:action="@{${Attachment}?'/save:'/update'}" th:object="${Attachment}" method="post" 
+           method="post"
+           enctype="multipart/form-data">
+
+           <input type="file" 
+                  name="file" th.field="*{file}">
+
+           <button type="submit" 
+                  name="submit"
+                 ></button>
+     	
+     </form>
+</div>
+
+<div>
+<h1>List of FIles</h1>
+	<p th:text="${Attachment}"/>
+	  <table>
+	 <thead>
+	  <tr>
+	  	<th>fileName</th>
+	  
+	  	<th>downloadURL</th>
+	  	</tr>
+	 </thead>
+	 <tbody>
+	  <tr th:each="attach:${Attachment}">
+	  <td th:text="${attach.fileName}"/>
+	  <td th:text="${attach.downloadURL}"/>
+	   <input type="text" 
+                  name="URL" th.field="*{downloadURL}">
+	  <button type="submit" 
+                  name="Download"
+                   th:action="@{${Attachment}?'/download'}" th:object="${attachment}" >Download</button>
+	  </tr>
+	  
+	 </tbody>
+</div>
+</body>
+</html>
+</html>
